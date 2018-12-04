@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BillSplit</string>
+    <string name="title_friends">Friends</string>
+    <string name="title_groups">Groups</string>
+    <string name="title_add">Add</string>
+    <string name="title_activities">Activities</string>
+    <string name="title_profile">Profile</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="login_title">Login</string>
+    <string name="create_act">Create Account</string>
+    <string name="etEmail">Email</string>
+    <string name="etPassword">Password</string>
+    <string name="send_password_reset_email">Send Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_bill">AddBillActivity</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+</resources>

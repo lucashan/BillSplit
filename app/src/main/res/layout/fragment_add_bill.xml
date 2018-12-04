@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <Button
+            android:text="Cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/CancelButton"
+            android:background="@color/indian_red"
+            android:layout_marginTop="17dp"
+            app:layout_constraintTop_toBottomOf="@+id/AddButton" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="54dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="148dp" android:layout_marginStart="148dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="148dp"
+            android:layout_marginRight="148dp"/>
+    <Button
+            android:text="Add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AddButton"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/addPrice" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="148dp" android:layout_marginStart="148dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="148dp"
+            android:layout_marginRight="148dp" android:background="@color/sea_green"/>
+    <TextView
+            android:text="Enter User:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addUserText"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="52dp" app:layout_constraintBottom_toTopOf="@+id/addUser"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="160dp"
+            android:layout_marginStart="160dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="155dp" android:layout_marginRight="155dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/addUser"
+            android:layout_marginTop="1dp" app:layout_constraintTop_toBottomOf="@+id/addUserText"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="85dp"
+            android:layout_marginStart="85dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="84dp"
+            android:layout_marginRight="84dp" android:layout_marginBottom="11dp"
+            app:layout_constraintBottom_toTopOf="@+id/addContentText"/>
+    <TextView
+            android:text="Enter content:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addContentText"
+            android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@+id/addUser" android:layout_marginBottom="9dp"
+            app:layout_constraintBottom_toTopOf="@+id/addContent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="148dp" android:layout_marginStart="148dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="148dp"
+            android:layout_marginRight="148dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/addContent"
+            android:layout_marginTop="3dp"
+            app:layout_constraintTop_toBottomOf="@+id/addContentText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="85dp" android:layout_marginStart="85dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="84dp" android:layout_marginRight="84dp" android:layout_marginBottom="22dp"
+            app:layout_constraintBottom_toTopOf="@+id/addPriceText" app:layout_constraintHorizontal_bias="0.0"/>
+    <TextView
+            android:text="Enter price:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addPriceText"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="157dp"
+            android:layout_marginStart="157dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="156dp" android:layout_marginRight="156dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="21dp" app:layout_constraintTop_toBottomOf="@+id/addContent"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/addPrice"
+            android:layout_marginTop="11dp"
+            app:layout_constraintTop_toBottomOf="@+id/addPriceText" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="85dp" android:layout_marginStart="85dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="84dp" android:layout_marginRight="84dp" android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/AddButton"/>
+</android.support.constraint.ConstraintLayout>
