@@ -12,13 +12,17 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.lhan.billsplit.R.id.*
 import com.example.lhan.lab5.dummy.LHanDataStore
+import com.example.lhan.lab5.dummy.LHanDataStore.addItem
+import com.example.lhan.lab5.dummy.LHanDataStore.createHouseBill
+import com.example.lhan.lab5.dummy.LHanDataStore.makeBill
+import com.example.lhan.lab5.dummy.LHanDataStore.makePrice
 import kotlinx.android.synthetic.main.fragment_add_bill.*
 import java.nio.channels.Selector
 
 class AddBillFragment : DialogFragment() {
 
     private lateinit var itemSelector: Selector
-    private var activitiesModel : ActivitiesViewModel? = null
+    private var activitiesViewModel : ActivitiesViewModel? = null
     private var addButton: Button? = null
     private var cancelButton: Button? = null
 
@@ -30,7 +34,7 @@ class AddBillFragment : DialogFragment() {
         addButton = root.findViewById(R.id.AddButton)
         cancelButton = root.findViewById(R.id.CancelButton)
 
-        activitiesModel = ViewModelProviders.of(activity!!).get(ActivitiesViewModel::class.java)
+        activitiesViewModel = ViewModelProviders.of(activity!!).get(ActivitiesViewModel::class.java)
         addBill()
         return root
     }
@@ -38,18 +42,16 @@ class AddBillFragment : DialogFragment() {
     private fun addBill() {
         /* Add bill information */
         addButton!!.setOnClickListener {
-            val user = LHanDataStore.makeUser(addUser!!.text.toString())
-            val content = LHanDataStore.makeBill(addContent!!.text.toString())
-            val price = LHanDataStore.makePrice(addPrice!!.text.toString())
+            val user = activitiesViewModel!!.makeUser(addUser!!.text.toString())
+            val content = activitiesViewModel!!.makeBill(addContent!!.text.toString())
+            val price = activitiesViewModel!!.makePrice(addPrice!!.text.toString())
             if (user.isNullOrEmpty() || content.isNullOrEmpty() || price.isNullOrEmpty())
                 Toast.makeText(activity, "Error: Fill out the fields.", Toast.LENGTH_SHORT).show()
             else{
                 Toast.makeText(activity, "Successfully added.", Toast.LENGTH_SHORT).show()
-                LHanDataStore.addItem(LHanDataStore.createHouseBill(user, content, price))
+                activitiesViewModel!!.addItem(activitiesViewModel!!.createHouseBill(user, content, price))
                 dismiss()
             }
-//            fragTextView.text = sum.toString()
-//            (activity as AddDialogFragmentListener).onAddDialogClick(sum)
         }
 
         /* Cancel bill information */
@@ -57,9 +59,4 @@ class AddBillFragment : DialogFragment() {
             dismiss()
         }
     }
-
-//    interface AddDialogFragmentListener {
-//        fun onAddDialogClick(value : Int)
-//    }
-
 }

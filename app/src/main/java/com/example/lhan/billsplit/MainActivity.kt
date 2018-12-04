@@ -29,13 +29,6 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-//    override fun onAttachFragment(fragment: Fragment?) {
-//        if (fragment is ActivitiesFragment.OnListFragmentInteractionListener) {
-//            val headlinesFragment = fragment as ActivitiesFragment.OnListFragmentInteractionListener?
-//            headlinesFragment!!.onListFragmentInteraction(item)
-//        }
-//    }
-
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_friends -> {
@@ -57,7 +50,7 @@ class MainActivity : AppCompatActivity(){
             }
             R.id.navigation_activities -> {
                 toolbar.title = "Activities"
-                val activitiesFragment = ActivitiesFragment.newInstance()
+                val activitiesFragment = ActivitiesFragment.newInstance(1)
                 openFragment(activitiesFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -79,8 +72,4 @@ class MainActivity : AppCompatActivity(){
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
-//    override fun onListFragmentInteraction(item: LHanDataStore.HouseBill?) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
 }

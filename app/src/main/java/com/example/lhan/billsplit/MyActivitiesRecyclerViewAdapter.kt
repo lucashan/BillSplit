@@ -5,62 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
-//
-//import com.example.lhan.billsplit.ActivitiesFragment.OnListFragmentInteractionListener
-import com.example.lhan.billsplit.dummy.DummyContent.DummyItem
-import com.example.lhan.lab5.dummy.LHanDataStore
-
 import kotlinx.android.synthetic.main.fragment_activities.view.*
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnListFragmentInteractionListener].
- * TODO: Replace the implementation with code for your data type.
- */
-//class MyActivitiesRecyclerViewAdapter(
-//    private val mValues: MutableList<LHanDataStore.HouseBill>,
-//    private val mListener: ActivitiesFragment.OnListFragmentInteractionListener?
-//) : RecyclerView.Adapter<MyActivitiesRecyclerViewAdapter.ViewHolder>() {
-//
-//    private val mOnClickListener: View.OnClickListener
-//    private var item: LHanDataStore.HouseBill? = null
-//    init {
-//        mOnClickListener = View.OnClickListener { v ->
-//            // Notify the active callbacks interface (the activity, if the fragment is attached to
-//            // one) that an item has been selected.
-//            mListener?.onListFragmentInteraction(item)
-//        }
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val view = LayoutInflater.from(parent.context)
-//            .inflate(R.layout.fragment_activities, parent, false)
-//        return ViewHolder(view)
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val item = mValues[position]
-//        holder.mUserView.text = item.user
-//        holder.mContentView.text = item.content
-//        holder.mPriceView.text = item.price
-//
-//        with(holder.mView) {
-//            tag = item
-//            setOnClickListener(mOnClickListener)
-//        }
-//    }
-//
-//    override fun getItemCount(): Int = mValues.size
-//
-//    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-//        val mUserView: TextView = mView.user
-//        val mContentView: TextView = mView.content
-//        val mPriceView: TextView = mView.price
-//
-//
-//        override fun toString(): String {
-//            return super.toString() + " '" + mContentView.text + "'"
-//        }
-//    }
-//}
+class MyActivitiesRecyclerViewAdapter(
+    private val mValues: MutableList<ActivitiesViewModel.HouseBill>) : RecyclerView.Adapter<MyActivitiesRecyclerViewAdapter.ViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.fragment_activities, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = mValues[position]
+        holder.mUserView.text = item.user
+        holder.mContentView.text = item.content
+        holder.mPriceView.text = item.price
+    }
+
+    override fun getItemCount(): Int = mValues.size
+
+    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+        val mUserView: TextView = mView.user
+        val mContentView: TextView = mView.content
+        val mPriceView: TextView = mView.price
+
+        override fun toString(): String {
+            return super.toString() + " '" + mContentView.text + "'"
+        }
+    }
+}
