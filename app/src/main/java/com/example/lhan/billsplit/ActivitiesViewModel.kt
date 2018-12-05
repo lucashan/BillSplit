@@ -6,7 +6,7 @@ import java.util.ArrayList
 import java.util.HashMap
 
 class ActivitiesViewModel: ViewModel() {
-    var bill = MutableLiveData<HouseBill?>()
+    val data = MutableLiveData<MutableList<HouseBill>>()
 
     /**
      * An array of sample house bills.
@@ -21,6 +21,10 @@ class ActivitiesViewModel: ViewModel() {
     fun addItem(item: HouseBill) {
         ITEMS.add(item)
         ITEM_MAP.put(item.user, item)
+    }
+    fun deleteItem(item: HouseBill) {
+        ITEMS.remove(item)
+        ITEM_MAP.remove(item.user)
     }
 
     fun createHouseBill(user: String, content: String, price: String): HouseBill {

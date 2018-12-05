@@ -1,7 +1,9 @@
 package com.example.lhan.billsplit
 
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -28,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private var mProgressBar: ProgressDialog? = null
     //Firebase references
     private var mAuth: FirebaseAuth? = null
+    private var sp: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,12 @@ class LoginActivity : AppCompatActivity() {
         btnCreateAccount = findViewById<View>(R.id.btn_register_account) as Button
         mProgressBar = ProgressDialog(this)
         mAuth = FirebaseAuth.getInstance()
+        /* Saving account information and staying logged in */
+        sp = getSharedPreferences("login", Context.MODE_PRIVATE)
+        val sp1 = sp
+        if(sp1!!.getBoolean("logged", false)){
+            updateUI()
+        }
         tvForgotPassword!!
             .setOnClickListener { startActivity(
                 Intent(this@LoginActivity,
@@ -68,6 +77,8 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with signed-in user's information
                         Log.d(TAG, "signInWithEmail:success")
+                        /* Stay logged in */
+                        sp!!.edit().putBoolean("logged",true).apply()
                         updateUI()
                     } else {
                         // If sign in fails, display a message to the user.

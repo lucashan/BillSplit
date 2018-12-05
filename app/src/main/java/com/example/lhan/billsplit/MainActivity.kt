@@ -1,29 +1,23 @@
 package com.example.lhan.billsplit
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import com.example.lhan.lab5.dummy.LHanDataStore
 
 
 class MainActivity : AppCompatActivity(){
 
     lateinit var toolbar: ActionBar
-    private var item: LHanDataStore.HouseBill? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val friendsFragment = FriendsFragment.newInstance()
         openFragment(friendsFragment)
         toolbar = supportActionBar!!
-
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -45,7 +39,7 @@ class MainActivity : AppCompatActivity(){
             }
             R.id.navigation_add -> {
                 val addBillFragment = AddBillFragment()
-                addBillFragment.show(supportFragmentManager,"my_fragment")
+                addBillFragment.show(supportFragmentManager,"add_fragment")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_activities -> {
@@ -63,13 +57,13 @@ class MainActivity : AppCompatActivity(){
         }
         false
     }
-    /**
-     * This function navigates to the fragment on click
-     */
-    private fun openFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+        /**
+         * This function navigates to the fragment on click
+         */
+        private fun openFragment(fragment: Fragment) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 }

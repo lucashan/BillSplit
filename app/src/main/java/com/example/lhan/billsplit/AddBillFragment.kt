@@ -22,7 +22,9 @@ import java.nio.channels.Selector
 class AddBillFragment : DialogFragment() {
 
     private lateinit var itemSelector: Selector
-    private var activitiesViewModel : ActivitiesViewModel? = null
+    private val activitiesViewModel: ActivitiesViewModel by lazy {
+        ViewModelProviders.of(activity!!).get(ActivitiesViewModel::class.java)
+    }
     private var addButton: Button? = null
     private var cancelButton: Button? = null
 
@@ -33,8 +35,6 @@ class AddBillFragment : DialogFragment() {
         val root = inflater.inflate(R.layout.fragment_add_bill, container, false)
         addButton = root.findViewById(R.id.AddButton)
         cancelButton = root.findViewById(R.id.CancelButton)
-
-        activitiesViewModel = ViewModelProviders.of(activity!!).get(ActivitiesViewModel::class.java)
         addBill()
         return root
     }
@@ -42,14 +42,15 @@ class AddBillFragment : DialogFragment() {
     private fun addBill() {
         /* Add bill information */
         addButton!!.setOnClickListener {
-            val user = activitiesViewModel!!.makeUser(addUser!!.text.toString())
-            val content = activitiesViewModel!!.makeBill(addContent!!.text.toString())
-            val price = activitiesViewModel!!.makePrice(addPrice!!.text.toString())
+            val user = activitiesViewModel.makeUser(addUser!!.text.toString())
+            val content = activitiesViewModel.makeBill(addContent!!.text.toString())
+            val price = activitiesViewModel.makePrice(addPrice!!.text.toString())
             if (user.isNullOrEmpty() || content.isNullOrEmpty() || price.isNullOrEmpty())
                 Toast.makeText(activity, "Error: Fill out the fields.", Toast.LENGTH_SHORT).show()
             else{
                 Toast.makeText(activity, "Successfully added.", Toast.LENGTH_SHORT).show()
-                activitiesViewModel!!.addItem(activitiesViewModel!!.createHouseBill(user, content, price))
+                activitiesViewModel.addItem(activitiesViewModel.createHouseBill(user, content, price))
+                println(activitiesViewModel.ITEMS)
                 dismiss()
             }
         }
