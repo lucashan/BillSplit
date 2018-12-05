@@ -43,6 +43,11 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.example.lhan.billsplit.ItemListActivity"/>
         </activity>
+        <activity
+                android:name=".ActivitiesDetailActivity"
+                android:label="@string/title_activity_activities_detail"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

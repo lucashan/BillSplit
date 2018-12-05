@@ -7,16 +7,19 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_activities_detail.*
 
 
 class ActivitiesFragment : Fragment() {
-
+    /**
+     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
+     * device.
+     */
     private lateinit var activitiesViewModel: ActivitiesViewModel
     private var columnCount = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
@@ -35,7 +38,7 @@ class ActivitiesFragment : Fragment() {
                     columnCount <= 1 -> android.support.v7.widget.LinearLayoutManager(context)
                     else -> android.support.v7.widget.GridLayoutManager(context, columnCount)
                 }
-                adapter = MyActivitiesRecyclerViewAdapter(activitiesViewModel.ITEMS)
+                adapter = ActivitiesRecyclerViewAdapter(activitiesViewModel.ITEMS)
             }
         }
         return view

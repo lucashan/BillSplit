@@ -3,15 +3,8 @@
               xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:orientation="vertical">
-
     <TextView
-            android:id="@+id/id_text_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem" />
-    <TextView
-            android:id="@+id/type_detail"
+            android:id="@+id/user_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
@@ -22,9 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem" />
-
     <TextView
-            android:id="@+id/user_detail"
+            android:id="@+id/price_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
