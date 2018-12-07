@@ -1,12 +1,10 @@
 package com.example.lhan.billsplit
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import com.example.lhan.lab5.dummy.LHanDataStore
 
 
 class MainActivity : AppCompatActivity(){
@@ -15,7 +13,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val friendsFragment = FriendsFragment.newInstance()
+        val friendsFragment = FriendsFragment.newInstance(1)
         openFragment(friendsFragment)
         toolbar = supportActionBar!!
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
@@ -27,7 +25,7 @@ class MainActivity : AppCompatActivity(){
         when (item.itemId) {
             R.id.navigation_friends -> {
                 toolbar.title = "Friends"
-                val friendsFragment = FriendsFragment.newInstance()
+                val friendsFragment = FriendsFragment.newInstance(1)
                 openFragment(friendsFragment)
                 return@OnNavigationItemSelectedListener true
             }

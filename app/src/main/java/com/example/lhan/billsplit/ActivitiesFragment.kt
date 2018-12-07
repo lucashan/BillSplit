@@ -1,20 +1,18 @@
 package com.example.lhan.billsplit
 
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.activity_activities_detail.*
-
+import android.widget.TextView
+import kotlinx.android.synthetic.main.fragment_activities.view.*
 
 class ActivitiesFragment : Fragment() {
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
     private lateinit var activitiesViewModel: ActivitiesViewModel
     private var columnCount = 1
 
@@ -38,18 +36,15 @@ class ActivitiesFragment : Fragment() {
                     columnCount <= 1 -> android.support.v7.widget.LinearLayoutManager(context)
                     else -> android.support.v7.widget.GridLayoutManager(context, columnCount)
                 }
-                adapter = ActivitiesRecyclerViewAdapter(activitiesViewModel.ITEMS)
+                adapter = ActivitiesRecyclerViewAdapter(context, activitiesViewModel.ITEMS)
             }
         }
         return view
     }
 
     companion object {
-
-        // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
             ActivitiesFragment().apply {
@@ -59,4 +54,53 @@ class ActivitiesFragment : Fragment() {
             }
     }
 
+    /* -------------------------------------- Activities RecyclerView Adapter --------------------------------------- */
+
+    class ActivitiesRecyclerViewAdapter(context: Context, private val mValues: MutableList<ActivitiesViewModel.HouseBill>) :
+        RecyclerView.Adapter<ActivitiesRecyclerViewAdapter.ViewHolder>() {
+        private val onClickListener: View.OnClickListener
+        private val mainActivity: MainActivity = context as MainActivity
+        /* Display the options to either pay or delete bill */
+        init {
+            onClickListener = View.OnClickListener { v ->
+                val actionBillFragment = ActionBillFragment()
+                actionBillFragment.show(mainActivity.supportFragmentManager,"action_fragment")
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.fragment_activities, parent, false)
+            return ViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            val item = mValues[position]
+            holder.mUserView.text = item.user
+            holder.mContentView.text = item.content
+            holder.mPriceView.text = item.price
+            with(holder.itemView) {
+                tag = item
+                setOnClickListener(onClickListener)
+            }
+        }
+
+        override fun getItemCount(): Int = mValues.size
+
+        inner class ViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+            val mUserView: TextView = mView.user
+            val mContentView: TextView = mView.content
+            val mPriceView: TextView = mView.price
+
+        }
+        /**
+         * This function navigates to the fragment on click
+         */
+        private fun openFragment(fragment: Fragment) {
+            val transaction = mainActivity.supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.container, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+    }
 }

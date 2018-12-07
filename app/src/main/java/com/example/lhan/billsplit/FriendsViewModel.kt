@@ -5,8 +5,8 @@ import android.arch.lifecycle.ViewModel
 import java.util.ArrayList
 import java.util.HashMap
 
-class ActivitiesViewModel: ViewModel() {
-    var data: MutableLiveData<MutableList<HouseBill>> = MutableLiveData()
+class FriendsViewModel: ViewModel() {
+    val data = MutableLiveData<MutableList<HouseBill>>()
 
     /**
      * An array of sample house bills.

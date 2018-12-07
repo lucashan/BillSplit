@@ -21,12 +21,9 @@ class ActivitiesDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_activities_detail)
-//        setSupportActionBar(detail_toolbar)
-        // Show the Up button in the action bar.
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         if (savedInstanceState == null) {
-            // Create the detail fragment and add it to the activity
-            // using a fragment transaction.
+            // Create the detail fragment and add it to the activity using a fragment transaction.
             val fragment = ActivitiesDetailFragment().apply {
                 arguments = Bundle().apply {
                     putString(
@@ -72,15 +69,6 @@ class ActivitiesDetailActivity : AppCompatActivity() {
             true
         }
         else -> super.onOptionsItemSelected(item)
-    }
-    /**
-     * This function navigates to the fragment on click
-     */
-    private fun openFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
     }
 }
 
