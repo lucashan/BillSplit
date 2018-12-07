@@ -25,29 +25,21 @@
         <activity android:name=".ForgotPasswordActivity">
         </activity>
         <activity
-                android:name=".AddBillActivity"
-                android:label="@string/title_activity_add_bill"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-                android:name=".ItemListActivity"
-                android:label="@string/title_item_list"
-                android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-                android:name=".ItemDetailActivity"
-                android:label="@string/title_item_detail"
-                android:parentActivityName=".ItemListActivity"
-                android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.example.lhan.billsplit.ItemListActivity"/>
-        </activity>
-        <activity
                 android:name=".ActivitiesDetailActivity"
                 android:label="@string/title_activity_activities_detail"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <!-- This is required for PayPal, since the page will be opened in Brower -->
+        <activity android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+                  android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
+        </activity>
+        
     </application>
 
 </manifest>

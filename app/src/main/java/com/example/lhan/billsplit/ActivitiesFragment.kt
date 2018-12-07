@@ -93,14 +93,5 @@ class ActivitiesFragment : Fragment() {
             val mPriceView: TextView = mView.price
 
         }
-        /**
-         * This function navigates to the fragment on click
-         */
-        private fun openFragment(fragment: Fragment) {
-            val transaction = mainActivity.supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.container, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
     }
 }
