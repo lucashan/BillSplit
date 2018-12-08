@@ -6,7 +6,14 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 
-
+/**
+ * USER CREDENTIALS:
+ * Email: test@test.com
+ * Password: 123456
+ *
+ * You can also register using the registration button with a valid email
+ * and a password with at least 6 characters.
+ */
 class MainActivity : AppCompatActivity(){
 
     lateinit var toolbar: ActionBar
@@ -21,6 +28,9 @@ class MainActivity : AppCompatActivity(){
 
     }
 
+    /**
+     * Bottom navigation bar option
+     */
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_friends -> {
