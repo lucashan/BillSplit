@@ -39,7 +39,6 @@ class ActionBillFragment : DialogFragment() {
     private fun payBill() {
         /* Add bill information */
         payButton!!.setOnClickListener {
-            Toast.makeText(activity, "Payment Successful.", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, StripeActivity::class.java)
             startActivity(intent)
             dismiss()
