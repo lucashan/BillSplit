@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val friendsFragment = FriendsFragment.newInstance(1)
+        val friendsFragment = FriendsFragment.newInstance()
         openFragment(friendsFragment)
         toolbar = supportActionBar!!
         val bottomNavigation: BottomNavigationView = findViewById(R.id.navigationView)
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(){
         when (item.itemId) {
             R.id.navigation_friends -> {
                 toolbar.title = "Friends"
-                val friendsFragment = FriendsFragment.newInstance(1)
+                val friendsFragment = FriendsFragment.newInstance()
                 openFragment(friendsFragment)
                 return@OnNavigationItemSelectedListener true
             }

@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter
 class GroupsFragment : ListFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val names = arrayOf("name1", "name2")
+        val names = arrayOf("Group 1", "Group 2")
         val adapter : ArrayAdapter<String> = ArrayAdapter(inflater.context, android.R.layout.simple_list_item_1, names)
         listAdapter = adapter
         return super.onCreateView(inflater, container, savedInstanceState)
